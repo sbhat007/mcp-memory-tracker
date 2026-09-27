@@ -42,6 +42,7 @@ def save_memory(memory: str):
     return {"status": "saved", "vector_store_id": vector_store.id}
 
 # tool to search openai's vector store for the stored memory as text
+@mcp.tool()
 def search_memory(query: str):
     """Search memories in the vector store and return relevant chunks."""
     vector_store = get_or_create_vector_store()
