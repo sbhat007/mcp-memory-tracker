@@ -1,5 +1,7 @@
 import requests
 
+# just a file hosting utility functions for server.py
+
 CHESS_API_BASE = "https://api.chess.com/pub"
 
 headers = {"accept": "application/json",

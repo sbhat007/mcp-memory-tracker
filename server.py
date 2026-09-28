@@ -13,10 +13,12 @@ VECTOR_STORE_NAME = "MEMORIES"
 
 mcp = FastMCP("memories")
 
-# whatever conversation you have with mcp cient can be stored in openai's vector store as a memory so that it can effectively searched for
+# whatever conversation you have with mcp cient can be stored in openai's vector store as a memory so that it can effectively be searched for
 # and retrieved using RAG's semantic search instead of manually storing locally in a temp file and doing a keyword search on them!
 
 # creates a vector store using openai API to store memories via temp files
+# basically you interact with client, gets some response and store that conversation to openAI
+
 def get_or_create_vector_store():
     # Try to find existing vector store, else create
     stores = client.vector_stores.list()
@@ -25,7 +27,8 @@ def get_or_create_vector_store():
             return store
     return client.vector_stores.create(name=VECTOR_STORE_NAME)
 
-# tool to save memory in openai's vector db via a temp file
+# tool to save memory in OpenAI's vector db via a temp file
+
 @mcp.tool()
 def save_memory(memory: str):
     """Save a memory string to the vector store."""
@@ -41,7 +44,8 @@ def save_memory(memory: str):
         )
     return {"status": "saved", "vector_store_id": vector_store.id}
 
-# tool to search openai's vector store for the stored memory as text
+# tool to search OpenAI's vector store for the stored memory as text
+
 @mcp.tool()
 def search_memory(query: str):
     """Search memories in the vector store and return relevant chunks."""
