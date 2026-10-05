@@ -2,7 +2,6 @@ from mcp.server.fastmcp import FastMCP
 from openai import OpenAI
 import tempfile
 from dotenv import load_dotenv
-import os
 
 # Load environment variables from a .env file if present
 load_dotenv()
